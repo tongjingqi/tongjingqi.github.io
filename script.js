@@ -1,5 +1,6 @@
 const sections = [...document.querySelectorAll("main section[id]")];
-const links = [...document.querySelectorAll(".nav-links a")];
+// Highlight navigation for the visible homepage section.
+const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 
 const byId = new Map(
   links.map((link) => [link.getAttribute("href").replace("#", ""), link])
@@ -20,7 +21,7 @@ const observer = new IntersectionObserver(
   },
   {
     rootMargin: "-25% 0px -55% 0px",
-    threshold: [0.2, 0.4, 0.6],
+    threshold: [0, 0.01, 0.05, 0.1, 0.2, 0.4, 0.6],
   }
 );
 
